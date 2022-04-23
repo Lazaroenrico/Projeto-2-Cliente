@@ -1,15 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Exo:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,400&display=swap");
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Exo, sans-serif;
 }
 
-body {
-  padding: 0;
-  margin: 0;
+body,
+html {
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  background-color: #ffffff;
 }
 
 .Home {
   position: relative;
-  background-image: radial-gradient(farthest-corner at 40px 40px, #ff760c 60%, #00d4ff80 100%);
+  background-image: radial-gradient(farthest-corner at 40px 40px, #24252A 65%, #06062580 100%);
   min-height: calc(100vh - 60px);
   margin: 15px;
   padding: 15px;
@@ -18,32 +25,410 @@ body {
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 .Home h2 {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   color: #000000;
 }
 
-.home-header {
+.Home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+@media (max-width: 350px) {
+  .Home-container .Home-container {
+    justify-content: unset;
+  }
+}
+
+.Header {
   display: flex;
   width: 100%;
-  height: 20vh;
+  height: 15vh;
   text-decoration: none;
   justify-content: space-around;
   align-items: center;
-  background-color: #24252A;
+  background-color: #b4530a;
   border-radius: 15px;
 }
-.home-header .row {
-  padding: 10px;
+.Header .row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px 0 35px 0;
+}
+.Header .row .Logo {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #ffffff4d;
+  margin-left: 100px;
   margin-top: 10px;
-  color: #FFFFFF;
+  width: 200px;
+  height: 45px;
 }
-.home-header .nav-container li {
-  text-decoration: none;
+.Header .row .Logo .Logo-icone {
+  position: absolute;
+  left: 40px;
+  top: 20px;
 }
-.home-header .nav-container li a, .home-header .nav-container li button {
-  background-color: #175f7a;
-  color: #FFFFFF;
+.Header .row .Logo .Logo-titulo {
+  position: absolute;
+  left: 150px;
+  top: 40px;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.Header nav .button-modal-create {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.Header nav .button-modal-create li {
+  list-style: none;
+}
+.Header nav .button-modal-create li a {
   text-decoration: none;
+  background-color: transparent;
+  border: 2px solid #ff760c;
+  padding: 10px;
+  color: #ff760c;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  width: 180px;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+}
+.Header nav .button-modal-create a:hover {
+  background-color: #ff760c;
+  color: #ffffff;
+}
+
+/*-----------------------Listas-----------------------------------------*/
+.AnimeLista {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px 50px;
+}
+
+.AnimeCardItem,
+.AnimeListaItem {
+  background: rgba(0, 0, 255, 0.171);
+  border-radius: 10px;
+  border: 2px solid #ff760c;
+  padding: 20px;
+  margin: 20px;
+  width: 260px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.AnimeCardItem {
+  margin: 20px 0;
+  height: 150px;
+  width: 100%;
+}
+
+.AnimeCardItem > div,
+.AnimeListaItem > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.AnimeCardItem-name,
+.AnimeListaItem-name {
+  margin: 10px;
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.AnimeCardItem-type,
+.AnimeListaItem-type {
   font-size: 20px;
+  margin: 10px;
+  color: #ffffff;
+}
+
+.AnimeCardItem-descreption,
+.AnimeListaItem-description {
+  font-size: 0.85em;
+  color: #ffffff;
+}
+
+.AnimeCardItem-episodes,
+.AnimeListaItem-episodes {
+  margin: 10px;
+  color: #15a177;
+}
+
+.AnimeListaItem-image {
+  border-radius: 20px;
+  width: 290px;
+  height: 200px;
+  margin-right: -70px;
+  margin-top: 40px;
+  box-shadow: 5px 5px 5px 5px #0000004d;
+  transition: all 0.2s ease-in-out;
+}
+
+.AnimeListaItem-image:hover {
+  transform: scale(1.1);
+}
+
+.anime-escolhida-espaco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+.anime-escolhida-espaco #idAnime {
+  padding: 0.5rem;
+  width: 315px;
+  border: none;
+  border-radius: 0.2rem;
+}
+.anime-escolhida-espaco .default-button {
+  display: flex;
+  background-color: transparent;
+  border: 2px solid #ff760c;
+  padding: 0.4rem;
+  color: #ff760c;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
+}
+.anime-escolhida-espaco .default-button:hover {
+  background-color: #ff760c;
+  color: #ffffff;
+}
+
+#anime-escolhida-input-espaco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/*-----------------------MODAL-----------------------------------------*/
+.modal-overlay {
+  background-color: #00000050;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.modal-overlay .modal {
+  margin: 1rem;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  min-height: 300px;
+  background-color: #fff;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.modal-overlay .modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: radial-gradient(farthest-corner at 40px 40px, #24252A 65%, #06062580 100%);
+  padding: 1rem;
+}
+.modal-overlay .modal .modal-header #title-header-modal {
+  color: #ff760c;
+}
+.modal-overlay .modal .modal-header .close-modal {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.5rem;
+  transform: scale(0.7);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.modal-overlay .modal .modal-header .close-modal:hover {
+  transform: scale(1);
+}
+.modal-overlay .modal .modal-body-delete {
+  display: flex;
+  flex-wrap: wrap;
+}
+.modal-overlay .modal .modal-body-delete p {
+  width: 100%;
+  margin-top: 10px;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.modal-overlay .modal .modal-body {
+  padding: 0.5rem 1rem;
+}
+.modal-overlay .modal .modal-body div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay .modal .modal-body div input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  outline: none;
+  border: solid 1px #ccc;
+  margin-bottom: 0.4rem;
+  border-radius: 0.3rem;
+}
+.modal-overlay .modal .modal-body div textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  outline: none;
+  border: solid 1px #ccc;
+  margin-bottom: 0.4rem;
+  border-radius: 0.3rem;
+}
+.modal-overlay .modal .modal-body div #button-form-modal {
+  padding: 0.5rem;
+  width: 30%;
+  font-size: 1rem;
+  background-color: transparent;
+  color: #15a177;
+  border: solid 1px #0097ce;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.modal-overlay .modal .modal-body div #button-form-modal:hover {
+  background-color: #0097ce;
+  color: #fff;
+}
+
+/*-----------------------BOTAO-----------------------------------------*/
+.Acoes {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 1rem;
+}
+.Acoes .btn {
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  max-width: 280px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 48%;
+  transition: all 0.3s ease-in-out;
+}
+.Acoes .Acoes-editar {
+  color: #003cff;
+  border: solid 1px #003cff;
+  background-color: transparent;
+}
+.Acoes .Acoes-editar:hover {
+  color: #fff;
+  background-color: #003cff;
+}
+.Acoes .Acoes-apagar {
+  color: #ff0000;
+  border: solid 1px #ff0000;
+  background-color: transparent;
+}
+.Acoes .Acoes-apagar:hover {
+  color: #fff;
+  background-color: #ff0000;
+}
+
+.btns-delete {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.btns-delete .btn-delete-no {
+  color: #ff0000;
+  border: solid 1px #ff0000;
+}
+.btns-delete .btn-delete-no:hover {
+  background-color: #ff0000;
+  color: #fff;
+}
+.btns-delete .btn-delete-yes {
+  color: #00b309;
+  border: solid 1px #00b309;
+}
+.btns-delete .btn-delete-yes:hover {
+  background-color: #00b309;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: transparent;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  width: 30%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/*----------------------------------------------@MEDIA------------------------------------*/
+@media (max-width: 1024px) {
+  .AnimeLista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 840px) {
+  .AnimeLista {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 400px) {
+  .AnimeCardItem .AnimeListaItem {
+    width: 210px;
+    height: 180px;
+  }
+}
+@media (max-width: 1220px) {
+  .Header {
+    max-width: 720px;
+  }
+}
+@media (max-width: 840px) {
+  .Header {
+    max-width: 320px;
+  }
+}
+@media (max-width: 400px) {
+  .Header {
+    max-width: 250px;
+  }
+
+  .row {
+    column-gap: 20px;
+  }
+
+  .Logo-titulo {
+    font-size: 1.5em;
+  }
 }

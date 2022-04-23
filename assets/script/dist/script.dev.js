@@ -19,7 +19,7 @@ function findAllAnimes() {
         case 5:
           animes = _context.sent;
           animes.forEach(function (anime) {
-            document.querySelector("#animeList").insertAdjacentHTML("beforeend", "\n      <div class=\"AnimeListaItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n          <div>\n              <div class=\"AnimeListaItem__name\">").concat(anime.name, "</div>\n              <div class=\"AnimeListaItem__type\">R$ ").concat(anime.type, "</div>\n              <div class=\"AnimeListaItem__description\">Descri\xE7\xE3o: ").concat(anime.description, "</div>\n              <div class=\"AnimeListaItem__episodes\">Epis\xF3dios: ").concat(anime.episodes, "</div>\n  \n              <div class=\"AnimeListaItem__acoes Acoes\">\n                <button class=\"Acoes__editar btn\" onclick=\"abrirModal(").concat(anime._id, ")\">Editar</button> \n                <button class=\"Acoes__apagar btn\" onclick=\"abrirModalDelete(").concat(anime._id, ")\">Apagar</button> \n              </div>\n          </div>\n          \n          <img class=\"PaletaListaItem__image\" src=\"").concat(anime.image, "\" alt=\"Paleta de ").concat(anime.name, "\" />\n  \n          \n      </div>\n      "));
+            document.querySelector("#animeList").insertAdjacentHTML("beforeend", "\n      <div class=\"AnimeListaItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n          <div>\n              <div class=\"AnimeListaItem-name\">").concat(anime.name, "</div>\n              <div class=\"AnimeListaItem-type\"><i> ").concat(anime.type, "</i></div>\n              <div class=\"AnimeListaItem-description\">Descri\xE7\xE3o: ").concat(anime.description, "</div>\n              <div class=\"AnimeListaItem-episodes\"> ").concat(anime.episodes, " Epis\xF3dios.</div>\n  \n              <div class=\"AnimeListaItem-acoes Acoes\">\n                <button class=\"Acoes-editar btn\" onclick=\"abrirModal('").concat(anime._id, "')\">Editar</button> \n                <button class=\"Acoes-apagar btn\" onclick=\"abrirModalDelete('").concat(anime._id, "')\">Apagar</button> \n              </div>\n          </div>\n          \n          <img class=\"AnimeListaItem-image\" src=\"").concat(anime.image, "\" alt=\"O anime \xE9 ").concat(anime.name, "\" />\n  \n          \n      </div>\n      "));
           });
 
         case 7:
@@ -31,7 +31,7 @@ function findAllAnimes() {
 }
 
 function findByIdAnimes() {
-  var id, response, anime, paletaEscolhidaDiv;
+  var id, response, anime, animeEscolhidoDiv;
   return regeneratorRuntime.async(function findByIdAnimes$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -47,8 +47,8 @@ function findByIdAnimes() {
 
         case 6:
           anime = _context2.sent;
-          paletaEscolhidaDiv = document.querySelector("#AnimeEscolhido");
-          paletaEscolhidaDiv.innerHTML = "\n    <div class=\"AnimeCardItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n    <div>\n        <div class=\"AnimeCardItem__name\">").concat(anime.name, "</div>\n        <div class=\"AnimeCardItem__type\">R$ ").concat(anime.type, "</div>\n        <div class=\"AnimeCardItem__description\">").concat(anime.description, "</div>\n        <div class=\"AnimeListaItem__episodes\">").concat(anime.episodes, "</div>\n        \n        <div class=\"AnimeListaItem__acoes Acoes\">\n            <button class=\"Acoes__editar btn\" onclick=\"abrirModal(").concat(anime._id, ")\">Editar</button> \n            <button class=\"Acoes__apagar btn\" onclick=\"abrirModalDelete(").concat(anime._id, ")\">Apagar</button> \n        </div>\n    </div>\n    <img class=\"AnimeCardItem__image\" src=\"").concat(anime.image, "\" alt=\"Paleta de ").concat(anime.name, "\" />\n  </div>");
+          animeEscolhidoDiv = document.querySelector("#AnimeEscolhido");
+          animeEscolhidoDiv.innerHTML = "\n    <div class=\"AnimeCardItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n    <div>\n        <div class=\"AnimeCardItem-name\">").concat(anime.name, "</div>\n        <div class=\"AnimeCardItem-type\"> ").concat(anime.type, "</div>\n        <div class=\"AnimeCardItem-description\">").concat(anime.description, "</div>\n        <div class=\"AnimeListaItem-episodes\">").concat(anime.episodes, "</div>\n        \n        <div class=\"AnimeListaItem-acoes Acoes\">\n            <button class=\"Acoes-editar btn\" onclick=\"abrirModal('").concat(anime._id, "')\">Editar</button> \n            <button class=\"Acoes-apagar btn\" onclick=\"abrirModalDelete('").concat(anime._id, "')\">Apagar</button> \n        </div>\n    </div>\n    <img class=\"AnimeCardItem-image\" src=\"").concat(anime.image, "\" alt=\"O anime \xE9 ").concat(anime.name, "\" />\n  </div>");
 
         case 9:
         case "end":
@@ -69,17 +69,17 @@ function abrirModal() {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
-          id = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : null;
+          id = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : "";
 
-          if (!(id != null)) {
+          if (!(id != "")) {
             _context3.next = 18;
             break;
           }
 
-          document.querySelector("#title-header-modal").innerText = "Atualizar um Anime";
-          document.querySelector("#button-form-modal").innerText = "Atualizar";
+          document.querySelector("#title-header-modal").innerHTML = "Atualizar um Anime";
+          document.querySelector("#button-form-modal").innerHTML = "Atualizar";
           _context3.next = 6;
-          return regeneratorRuntime.awrap(fetch("".concat(baseURL, "/anime/").concat(id)));
+          return regeneratorRuntime.awrap(fetch("".concat(baseURL, "/one-anime/").concat(id)));
 
         case 6:
           response = _context3.sent;
@@ -93,13 +93,13 @@ function abrirModal() {
           document.querySelector("#description").value = anime.description;
           document.querySelector("#image").value = anime.image;
           document.querySelector("#episodes").value = anime.episodes;
-          document.querySelector("#id").value = anime.id;
+          document.querySelector("#id").value = anime._id;
           _context3.next = 20;
           break;
 
         case 18:
-          document.querySelector("#title-header-modal").innerText = "Cadastrar um Anime";
-          document.querySelector("#button-form-modal").innerText = "Cadastrar";
+          document.querySelector("#title-header-modal").innerHTML = "Cadastrar um Anime";
+          document.querySelector("#button-form-modal").innerHTML = "Cadastrar";
 
         case 20:
           document.querySelector("#overlay").style.display = "flex";
@@ -141,7 +141,7 @@ function createAnime() {
             image: image,
             episodes: episodes
           };
-          modoEdicaoAtivado = id > 0;
+          modoEdicaoAtivado = id != "";
           endpoint = baseURL + (modoEdicaoAtivado ? "/update-anime/".concat(id) : "/create-anime");
           _context4.next = 11;
           return regeneratorRuntime.awrap(fetch(endpoint, {
@@ -150,7 +150,7 @@ function createAnime() {
               "Content-Type": "application/json"
             },
             mode: "cors",
-            body: JSON.stringify(paleta)
+            body: JSON.stringify(anime)
           }));
 
         case 11:
@@ -160,7 +160,7 @@ function createAnime() {
 
         case 14:
           novaAnime = _context4.sent;
-          html = "\n    <div class=\"AnimeListaItem\" id=\"PaletaListaItem_".concat(anime._id, "\">\n      <div>\n          <div class=\"AnimeListaItem__name\">").concat(novaAnime.name, "</div>\n          <div class=\"AnimeListaItem__type\">R$ ").concat(novaAnime.type, "</div>\n          <div class=\"AnimeListaItem__description\">").concat(novaAnime.description, "</div>\n          <div class=\"AnimeListaItem__episodes\">").concat(anime.episodes, "</div>\n  \n          <div class=\"AnimeListaItem__acoes Acoes\">\n            <button class=\"Acoes__editar btn\" onclick=\"abrirModal(").concat(anime._id, ")\">Editar</button> \n            <button class=\"Acoes__apagar btn\" onclick=\"abrirModalDelete(").concat(anime._id, ")\">Apagar</button> \n          </div>\n      </div>\n      <img class=\"AnimeListaItem__image\" src=\"").concat(novaAnime.image, "\" alt=\"Paleta de ").concat(novaAnime.name, "\" />\n    </div>");
+          html = "\n    <div class=\"AnimeListaItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n      <div>\n          <div class=\"AnimeListaItem-name\">").concat(novaAnime.name, "</div>\n          <div class=\"AnimeListaItem-type\"> ").concat(novaAnime.type, "</div>\n          <div class=\"AnimeListaItem-description\">").concat(novaAnime.description, "</div>\n          <div class=\"AnimeListaItem-episodes\">").concat(anime.episodes, "</div>\n  \n          <div class=\"AnimeListaItem-acoes Acoes\">\n            <button class=\"Acoes-editar btn\" onclick=\"abrirModal('").concat(anime._id, "')\">Editar</button> \n            <button class=\"Acoes-apagar btn\" onclick=\"abrirModalDelete('").concat(anime._id, "')\">Apagar</button> \n          </div>\n      </div>\n      <img class=\"AnimeListaItem-image\" src=\"").concat(novaAnime.image, "\" alt=\"O anime \xE9 ").concat(novaAnime.name, "\" />\n    </div>");
 
           if (modoEdicaoAtivado) {
             document.querySelector("#AnimeListaItem_".concat(id)).outerHTML = html;
@@ -168,9 +168,10 @@ function createAnime() {
             document.querySelector("#animeList").insertAdjacentHTML("beforeend", html);
           }
 
+          document.location.reload(true);
           fecharModal();
 
-        case 18:
+        case 19:
         case "end":
           return _context4.stop();
       }
@@ -180,7 +181,7 @@ function createAnime() {
 
 function abrirModalDelete(id) {
   document.querySelector("#overlay-delete").style.display = "flex";
-  var btnSim = document.querySelector(".btn_delete_yes");
+  var btnSim = document.querySelector(".btn-delete-yes");
   btnSim.addEventListener("click", function () {
     deleteAnime(id);
   });
@@ -190,9 +191,9 @@ function fecharModalDelete() {
   document.querySelector("#overlay-delete").style.display = "none";
 }
 
-function deletePaleta(id) {
+function deleteAnime(id) {
   var response, result;
-  return regeneratorRuntime.async(function deletePaleta$(_context5) {
+  return regeneratorRuntime.async(function deleteAnime$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
