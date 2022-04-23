@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+    <title>Animes</title>
+</head>
+<body>
+    <section class="Home">
+<!-------------------------------------------HEADER --------------------------------------------------->
+
+        <header class="home-header">
+            <div class="row">
+                <div class="Header-logo Logo">
+                    <img src="" width="70px" alt="Logo Animes" class="Logo__icone" />
+                    <span class="Logo-titulo"> Anime </span>
+                </div>
+            </div>
+            <nav class="nav-container">
+                <li><a href="">Adicionar</a></li>
+                <li><a href="">Contato</a></li>
+                
+                <section class="button-modal-create">
+                    <button type="button" class="default-button" onclick="abrirModal()">Cadastrar Anime</button>
+                </section>
+
+            </nav>
+        </header>
+
+<!------------------------------------------------CREATE------------------------------------------------------>
+
+       
+
+        <section class="modal-overlay" id="overlay">
+
+            <div class="modal">
+
+                <div class="modal-header">
+                    <h2 id="title-header-modal">Cadastrar um Anime</h2>
+                    <a onclick="fecharModal()" class="close-modal">x</a>
+                </div>
+
+                <div class="modal-body">
+                    <div>
+                        <input type="hidden" id="id">
+                        <input type="text" name="name" id="name" placeholder="Nome do Anime">
+                        <input type="text" name="type" id="type" placeholder="Tipo do Anime">
+                        <textarea type="text" name="description" id="description" placeholder="Descrição do Anime"
+                            rows="5"></textarea>
+                        <input type="number" name="episodes" id="epiosdes" placeholder="Episódios do Anime">
+                        
+                        <input type="text" name="image" id="image" placeholder="Link da Foto do Anime">
+                        <button id="button-form-modal" onclick="createAnime()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+<!----------------------------------------------------------------------------------------------------------->
+
+
+        <section class="modal-overlay" id="overlay-delete">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 id="title-header-modal">Confirmação de deleção</h2>
+                    <a onclick="fecharModalDelete()" class="close-modal">x</a>
+                </div>
+                <div class="modal-body-delete">
+                    <p>Deseja realmente apagar esse anime ?</p>
+                    <div class="btns_delete">
+                        <button class="btn_delete_no btn_delete" onclick="fecharModalDelete()">Não</button>
+                        <button class="btn_delete_yes btn_delete">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2>Pesquisar Anime</h2>
+        <div class="anime-escolhida-espaco">
+            <div id="anime-escolhido-input-espaco">
+                <input type="number" id="idAnime" placeholder="Digite o ID do Anime e clique em 'Escolher'" />
+                <button class="default-button" onclick="findByIdAnimes()">ESCOLHER</button>
+            </div>
+            <div id="AnimeEscolhido">
+
+            </div>
+        </div>
+
+        <h2>Animes Cadastrados:</h2>
+        <div class="Home__container">
+            <div class="AnimeLista" id="animeList">
+            </div>
+        </div>
+    </section>
+    <script src="./assets/script/script.js"></script>
+</body>
+</html>

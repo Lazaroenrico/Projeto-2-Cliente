@@ -1,0 +1,13 @@
+{
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true       
+    },
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "editor.defaultFormatter":"esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
