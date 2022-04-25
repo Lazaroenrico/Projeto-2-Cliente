@@ -6,7 +6,7 @@ async function findAllAnimes() {
   const animes = await response.json();
 
   animes.forEach(function (anime) {
-    document.querySelector("#animeList").insertAdjacentHTML(
+    document.querySelector(".AnimeLista").insertAdjacentHTML(
       "beforeend",
       `
       <div class="AnimeListaItem" id="AnimeListaItem_${anime._id}">
@@ -36,6 +36,12 @@ async function findByIdAnimes() {
 
   const response = await fetch(`${baseURL}/one-anime/${id}`);
   const anime = await response.json();
+ 
+
+  document.querySelector(".list-all").style.display = "block"
+ document.querySelector(".AnimeLista").style.display = "none"
+ document.querySelector("#cadastro-anime").style.display = "none"
+
 
   const animeEscolhidoDiv = document.querySelector("#AnimeEscolhido");
 
@@ -44,13 +50,10 @@ async function findByIdAnimes() {
     <div>
         <div class="AnimeCardItem-name">${anime.name}</div>
         <div class="AnimeCardItem-type"> ${anime.type}</div>
-        <div class="AnimeCardItem-description">${anime.description}</div>
+        <div class="AnimeCardItem-descreption">${anime.description}</div>
         <div class="AnimeListaItem-episodes">${anime.episodes}</div>
         
-        <div class="AnimeListaItem-acoes Acoes">
-            <button class="Acoes-editar btn" onclick="abrirModal('${anime._id}')">Editar</button> 
-            <button class="Acoes-apagar btn" onclick="abrirModalDelete('${anime._id}')">Apagar</button> 
-        </div>
+        
     </div>
     <img class="AnimeCardItem-image" src="${anime.image}" alt="O anime é ${anime.name}" />
   </div>`;
@@ -141,7 +144,7 @@ async function createAnime() {
   if (modoEdicaoAtivado) {
     document.querySelector(`#AnimeListaItem_${id}`).outerHTML = html;
   } else {
-    document.querySelector("#animeList").insertAdjacentHTML("beforeend", html);
+    document.querySelector(".AnimeLista").insertAdjacentHTML("beforeend", html);
   }
   document.location.reload(true);
   fecharModal();
@@ -174,7 +177,7 @@ async function deleteAnime(id) {
   const result = await response.json();
   alert(result.message);
 
-  document.getElementById("animeList").innerHTML = "";
+  document.getElementById(".AnimeLista").innerHTML = "";
 
   fecharModalDelete();
   findAllAnimes();

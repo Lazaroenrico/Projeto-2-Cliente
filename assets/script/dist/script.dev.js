@@ -19,7 +19,7 @@ function findAllAnimes() {
         case 5:
           animes = _context.sent;
           animes.forEach(function (anime) {
-            document.querySelector("#animeList").insertAdjacentHTML("beforeend", "\n      <div class=\"AnimeListaItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n          <div>\n              <div class=\"AnimeListaItem-name\">").concat(anime.name, "</div>\n              <div class=\"AnimeListaItem-type\"><i> ").concat(anime.type, "</i></div>\n              <div class=\"AnimeListaItem-description\">Descri\xE7\xE3o: ").concat(anime.description, "</div>\n              <div class=\"AnimeListaItem-episodes\"> ").concat(anime.episodes, " Epis\xF3dios.</div>\n  \n              <div class=\"AnimeListaItem-acoes Acoes\">\n                <button class=\"Acoes-editar btn\" onclick=\"abrirModal('").concat(anime._id, "')\">Editar</button> \n                <button class=\"Acoes-apagar btn\" onclick=\"abrirModalDelete('").concat(anime._id, "')\">Apagar</button> \n              </div>\n          </div>\n          \n          <img class=\"AnimeListaItem-image\" src=\"").concat(anime.image, "\" alt=\"O anime \xE9 ").concat(anime.name, "\" />\n  \n          \n      </div>\n      "));
+            document.querySelector(".AnimeLista").insertAdjacentHTML("beforeend", "\n      <div class=\"AnimeListaItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n          <div>\n              <div class=\"AnimeListaItem-name\">").concat(anime.name, "</div>\n              <div class=\"AnimeListaItem-type\"><i> ").concat(anime.type, "</i></div>\n              <div class=\"AnimeListaItem-description\">Descri\xE7\xE3o: ").concat(anime.description, "</div>\n              <div class=\"AnimeListaItem-episodes\"> ").concat(anime.episodes, " Epis\xF3dios.</div>\n  \n              <div class=\"AnimeListaItem-acoes Acoes\">\n                <button class=\"Acoes-editar btn\" onclick=\"abrirModal('").concat(anime._id, "')\">Editar</button> \n                <button class=\"Acoes-apagar btn\" onclick=\"abrirModalDelete('").concat(anime._id, "')\">Apagar</button> \n              </div>\n          </div>\n          \n          <img class=\"AnimeListaItem-image\" src=\"").concat(anime.image, "\" alt=\"O anime \xE9 ").concat(anime.name, "\" />\n  \n          \n      </div>\n      "));
           });
 
         case 7:
@@ -47,10 +47,13 @@ function findByIdAnimes() {
 
         case 6:
           anime = _context2.sent;
+          document.querySelector(".list-all").style.display = "block";
+          document.querySelector(".AnimeLista").style.display = "none";
+          document.querySelector("#cadastro-anime").style.display = "none";
           animeEscolhidoDiv = document.querySelector("#AnimeEscolhido");
-          animeEscolhidoDiv.innerHTML = "\n    <div class=\"AnimeCardItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n    <div>\n        <div class=\"AnimeCardItem-name\">").concat(anime.name, "</div>\n        <div class=\"AnimeCardItem-type\"> ").concat(anime.type, "</div>\n        <div class=\"AnimeCardItem-description\">").concat(anime.description, "</div>\n        <div class=\"AnimeListaItem-episodes\">").concat(anime.episodes, "</div>\n        \n        <div class=\"AnimeListaItem-acoes Acoes\">\n            <button class=\"Acoes-editar btn\" onclick=\"abrirModal('").concat(anime._id, "')\">Editar</button> \n            <button class=\"Acoes-apagar btn\" onclick=\"abrirModalDelete('").concat(anime._id, "')\">Apagar</button> \n        </div>\n    </div>\n    <img class=\"AnimeCardItem-image\" src=\"").concat(anime.image, "\" alt=\"O anime \xE9 ").concat(anime.name, "\" />\n  </div>");
+          animeEscolhidoDiv.innerHTML = "\n    <div class=\"AnimeCardItem\" id=\"AnimeListaItem_".concat(anime._id, "\">\n    <div>\n        <div class=\"AnimeCardItem-name\">").concat(anime.name, "</div>\n        <div class=\"AnimeCardItem-type\"> ").concat(anime.type, "</div>\n        <div class=\"AnimeCardItem-descreption\">").concat(anime.description, "</div>\n        <div class=\"AnimeListaItem-episodes\">").concat(anime.episodes, "</div>\n        \n        \n    </div>\n    <img class=\"AnimeCardItem-image\" src=\"").concat(anime.image, "\" alt=\"O anime \xE9 ").concat(anime.name, "\" />\n  </div>");
 
-        case 9:
+        case 12:
         case "end":
           return _context2.stop();
       }
@@ -165,7 +168,7 @@ function createAnime() {
           if (modoEdicaoAtivado) {
             document.querySelector("#AnimeListaItem_".concat(id)).outerHTML = html;
           } else {
-            document.querySelector("#animeList").insertAdjacentHTML("beforeend", html);
+            document.querySelector(".AnimeLista").insertAdjacentHTML("beforeend", html);
           }
 
           document.location.reload(true);
@@ -214,7 +217,7 @@ function deleteAnime(id) {
         case 5:
           result = _context5.sent;
           alert(result.message);
-          document.getElementById("animeList").innerHTML = "";
+          document.getElementById(".AnimeLista").innerHTML = "";
           fecharModalDelete();
           findAllAnimes();
 

@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="shortcut icon" type="imgae/svg" href="/assets/Img">
     <title>Animes</title>
 </head>
 
 <body>
     <section class="Home">
-        <!-------------------------------------------HEADEr--------------------------------------------------->
+        <!-------------------------------------------HEADER--------------------------------------------------->
 
         <header class="home-header Header">
             <div class="row">
@@ -22,8 +24,12 @@
             </div>
             <nav class="nav-container">
                 <div class="button-modal-create">
-                    <li><a type="button" onclick="abrirModal()">Cadastrar </a></li>
+                    <input type="text" id="idAnime" placeholder="Digite o ID do Anime" />
+                    <button class="button-anime" onclick="findByIdAnimes()"><i class="bi bi-search"></i></button>
+                    <li><a type="button" id="cadastro-anime" onclick="abrirModal()">Cadastrar </a></li>
                     <li><a href="https://github.com/Lazaroenrico">GitHub</a></li>
+                    <a href="/" class="default-button list-all">Voltar</a>
+
                 </div>
             </nav>
         </header>
@@ -77,27 +83,25 @@
             </div>
         </section>
 
-        <!--------------------------------------PESQUISA------------------------------------------------------>
+        <!--------------------------------------HOME------------------------------------------------------>
 
-        <h2>Pesquisar Anime</h2>
-        <div class="anime-escolhida-espaco">
-            <div id="anime-escolhido-input-espaco">
-                <input type="text" id="idAnime" placeholder="Digite o ID do Anime e clique em 'Escolher'" />
-                <button class="default-button" onclick="findByIdAnimes()">ESCOLHER</button>
-            </div>
-            <div id="AnimeEscolhido">
-            </div>
-        </div>
 
-        <!--------------------------------------------------------------------------------------------------------->
-
-        <h2>Animes Cadastrados:</h2>
         <div class="Home-container">
-            <div class="AnimeLista" id="animeList">
-            </div>
+
+            <div class="AnimeLista"></div>
+
+            <div id="AnimeEscolhido"></div>
         </div>
     </section>
+
+
+
+
+
     <script src="./assets/script/script.js"></script>
+
+
+
 </body>
 
 </html>
